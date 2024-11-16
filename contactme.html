@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Conact Me</title>
+    <style>
+        /* Your existing styles go here */
+    </style>
+    <script>
+        // Function to load the saved title from localStorage
+        function loadTitle() {
+            const savedTitle = localStorage.getItem('pageTitle');
+            if (savedTitle) {
+                document.title = savedTitle; // Set the document title to saved title
+                document.getElementById('page-title').innerText = savedTitle; // Set the page title display to saved title
+            }
+        }
+
+        // Function to update the document title and save it to localStorage
+        function updateTitle() {
+            const titleInput = document.getElementById('title-input');
+            const newTitle = titleInput.value;
+            document.title = newTitle; // Update document title
+            localStorage.setItem('pageTitle', newTitle); // Save new title to localStorage
+            document.getElementById('page-title').innerText = newTitle; // Update displayed title
+        }
+
+        // Load the title when the page loads
+        window.onload = loadTitle;
+    </script>
+</head>
+
+    <style>
+        /* Basic styling to match the layout in the home page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #000000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 100px;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            background-color: #555;
+            color: #e0e0e0;
+        }
+        .search-bar button {
+            padding: 8px;
+            font-size: 1em;
+            background-color: #666;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            width: 150px;
+            background-color: #222;
+            padding: 20px;
+        }
+        .sidebar nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .sidebar nav a:hover {
+            background-color: #444;
+        }
+        .sidebar nav a img {
+            width: 100%;
+            max-width: 100px;
+            border-radius: 4px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+            position: relative;
+            text-align: center;
+        }
+        /* Hidden by default; fills entire content area when active */
+        .embedded-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* Small image buttons with hover effect */
+        .small-image-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .small-image-buttons a {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        .small-image-buttons a img {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .small-image-buttons a:hover img {
+            transform: scale(1.05);
+        }
+        /* Tooltip for hover text */
+        .small-image-buttons a .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+            background-color: #000;
+            color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+        .small-image-buttons a:hover .tooltip {
+            display: block;
+        }
+         .version-label {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8em;
+            color: #777;
+            background-color: #222;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        // URLs for the embedded content; add more as needed
+        const gameLinks = [
+            { url: 'https://thepizzaedition.github.io/assets/mainstorage/leveldevil.html', name: 'Game 1' },
+            { url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/WebStarterkit@27197d685502953065e3a3259b6e34f5acb94e65/src/sp1.5.xml&container=ig', name: 'Game 2' },
+            { url: 'https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/mind4ur/debugactions@6e97a528bfcdd0623e0cd99ad352baebf47a6b70/sr3d2.xml&container=ig', name: 'Game 3' }
+        ];
+
+        // Function to display embedded content based on the clicked game
+        function showEmbeddedContent(index) {
+            const embedContent = document.getElementById('embedded-content');
+            const iframe = document.getElementById('embedded-iframe');
+            
+            // Set the iframe source to the selected game link
+            iframe.src = gameLinks[index].url;
+            
+            // Hide intro content and display only the embedded content
+            document.getElementById('intro-content').style.display = 'none';
+            embedContent.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="logo">
+              <a href="https://blackonblack.playcode.io/index.html#"><img src="https://i.imgur.com/ywSmjZH.png" alt="Logo"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Not Working Yet">
+            <button onclick="performSearch()">X</button>
+        </div>
+    </header>
+
+    <!-- Main Container for Sidebar and Content -->
+    <div class="container">
+        <!-- Sidebar with Image Buttons -->
+        <aside class="sidebar">
+            <nav>
+                <a href="index.html">
+                    <img src="https://i.imgur.com/Q2ZJ1yr.png" alt="Home">
+                </a>
+                <a href="games.html">
+                    <img src="https://media.istockphoto.com/id/1253164220/vector/joystick-solid-icon-electronics-concept-gamepad-controller-sign-on-white-background-gaming.jpg?s=612x612&w=0&k=20&c=spEXkHiBKm--LEjw7BN-meDuTfIFcZUHaMgoS6H-mPc=" alt="Games">
+                </a>
+                  <a href="socialmedia.html">
+                    <img src="https://www.shutterstock.com/image-vector/paper-plane-icon-vector-send-260nw-469520879.jpg" alt="Social Media">
+                </a>
+               <a href="https://blackonblack.playcode.io/unblockedsearch">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6gpaZl2EC-OGFuTWxSW6RMWYdE6KxLHX-Ow&s" alt="Search the web">
+                </a>
+                 <a href="contactme.html">
+                    <img src="https://www.shutterstock.com/image-vector/email-mail-icon-isolated-on-260nw-769453291.jpg" alt="Contact Me">
+                </a>
+                 <a href="settings.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeZCfwz9YTQZbjHa2n8EzMwn9ojwg1Qec5JA&s" alt="Settings">
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Intro content section that is hidden when the embedded content is shown -->
+            <div id="intro-content">
+                <h1>Contact Me</h1>
+                <p></p>
+                <div class="small-image-buttons">
+                    <!-- Dynamically create buttons for each game link -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPQ9zmR4m_1dHkbxOl1zQA8cZLce7_ugeycGd_hGv73cNNwg/viewform?usp=sf_link" onclick="showEmbeddedContent(0)">
+                         <h1>Bugs</h1>
+                        <span class="tooltip">Bugs</span>
+                    </a>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSel8lxcQIJ8rTSJ-2Bouu3_X92hiIKyhbSU0rY0kw6TpkNgBQ/viewform?usp=sf_link" onclick="showEmbeddedContent(2)">
+                        <h1>Suggestions</h1>
+                        <span class="tooltip">Suggestions</span>
+                    </a>
+                    <a href="" onclick="showEmbeddedContent(1)">
+                         <h2></h2>
+                        <span class="tooltip"></span>
+                    </a>
+                    <a href="https://gmail.com" onclick="showEmbeddedContent(1)">
+                         <h2>Gmail:  gcmissinggames@gmail.com</h2>
+                        <span class="tooltip">Email</span>
+                    </a>
+                    
+                </div>
+            </div>
+
+            <!-- Embedded content section that fills the entire content area -->
+            <div id="embedded-content" class="embedded-content">
+                <iframe id="embedded-iframe" width="100%" height="100%" 
+                        src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+        </main>
+    </div>
+     <!-- Version Label in Bottom Left Corner with Link -->
+<div class="version-label">
+    <a href="version.html" style="color: inherit; text-decoration: none;">
+        Version 0.4
+    </a>
+</div>
+
+</body>
+</html>
