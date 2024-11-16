@@ -101,31 +101,49 @@
             padding: 5px 10px;
             border-radius: 4px;
         }
+
+     /* Popular Games Section */
+.popular-games {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.game-button {
+    background-color: #222;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.game-button:hover {
+    background-color: #111;
+}
+
+.game-button img {
+    width: 200px;
+    height: 200px;
+    border-radius: 6px;
+}
+
+/* Remove underline and change text color to white for links */
+.popular-games a {
+    text-decoration: none;  /* Remove the underline */
+    color: white;  /* Change text color to white */
+}
+
+
+
     </style>
-    <script>
-        // Function to load the saved title from localStorage
-        function loadTitle() {
-            const savedTitle = localStorage.getItem('pageTitle');
-            if (savedTitle) {
-                document.title = savedTitle; // Set the document title to saved title
-                document.getElementById('page-title').innerText = savedTitle; // Set the page title display to saved title
-            }
-        }
-
-        // Function to update the document title and save it to localStorage
-        function updateTitle() {
-            const titleInput = document.getElementById('title-input');
-            const newTitle = titleInput.value;
-            document.title = newTitle; // Update document title
-            localStorage.setItem('pageTitle', newTitle); // Save new title to localStorage
-            document.getElementById('page-title').innerText = newTitle; // Update displayed title
-        }
-
-        // Load the title when the page loads
-        window.onload = loadTitle;
-    </script>
 </head>
 <body>
+
     <!-- Top Navigation Bar -->
     <header class="top-nav">
         <div class="logo">
@@ -152,19 +170,69 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main class="content">
+        <main class="content" id="game-content">
             <h1>Welcome to Black on Black</h1>
-            <p>I believe students should have unrestricted access to unblocked games at school, so I'm presenting this website as a fun, accessible way to bring games into the classroom!</p>
-        <h1>  </h1>
+            <p>Black On Black presents a wide variety of exciting games brought to you for pure satisfaction!</p>
+            
+            <!-- Popular Games Section -->
+            <div class="popular-games">
+                <a href="#" onclick="loadGame('https://7fi38sh5jf43gd096hft5-opensocial.googleusercontent.com/gadgets/ifr?url=https://274079163-174037128449362058.preview.editmysite.com/uploads/b/139890129-899796311729593176/files/rtbl.xml&container=ig')">
+                    <button class="game-button">
+                        <img src="https://cdn-images.threadless.com/~tms/pixelpigskin/products/2431753/shirt-1629832515-b9ebd822dc5a2208f1aa646a45f4eebf.png?v=3&d=g6NvcHOWk6R0cmltksLCgJOmcmVzaXplkIOld2lkdGjLQI8gAAAAAACmaGVpZ2h0y0CPIAAAAAAAqGFsbG93X3VwwpOvY2FudmFzX2NlbnRlcmVkks0EsM0EsIGqYmFja2dyb3VuZKYwMDAwMDCTpnJlc2l6ZZHNAyCAk69jYW52YXNfY2VudGVyZWSTzQMgzQMgpyNmZmZmZmaAk6ZlbmNvZGWSo2pwZ1WApWZvcmNlwqlvbmx5X21ldGHC&f=mp" alt="Retro Bowl">
+                        <h1>Retro Bowl</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/mind4ur/debugactions@6e97a528bfcdd0623e0cd99ad352baebf47a6b70/sr3d2.xml&container=ig')">
+                    <button class="game-button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQZdKvQbUVh7SOeTZ8g-pWqZsa9jW7oBbOtw&s" alt="Snow Rider">
+                        <h1>Snow Rider</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://yandhi.herokuapp.com/service/hvtrs8%2F-arp%2Fpml%7Btpaak%2Ckmdwb%2Ccmm-0%2C4%2C2-%3F')">
+                    <button class="game-button">
+                        <img src="https://www2.minijuegosgratis.com/v3/games/thumbnails/245571_7_sq.jpg" alt="Poly Track">
+                        <h1>Poly Track</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://yandhi.herokuapp.com/service/hvtrs8%2F-m%2Ciermuvkc.pu-g%2F1-133-Gnafijorpgrq%2F')">
+                    <button class="game-button">
+                        <img src="https://play-lh.googleusercontent.com/HUuFbIPERNbpW2Q72WIqiJ8bKDzIgT_C4PnYvMBuH0wC3B_KvpKmumm1FXhZj3jmRHw" alt="Gladdihoppers">
+                        <h1>Gladihoppers</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://script.google.com/macros/s/AKfycbw6e8fflbfydV7kom5id09nKaM6ix0hLlXHbs3XHOnxzrndUgPtHUHENrwKomI2Hpk3/exec')">
+                    <button class="game-button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsHaClRDZecLzHEGlit0oxNegL8U-KB5MtQg&s" alt="Cluster Rush">
+                        <h1>Cluster Rush</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://ubg77.github.io/game131022/drive-mad/')">
+                    <button class="game-button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0KoplPc01FN5geyqKJJkV4SluiHengY7bbg&s" alt="Drive Mad">
+                        <h1>Drive Mad</h1>
+                    </button>
+                </a>
+            </div>
         </main>
     </div>
 
     <!-- Version Label in Bottom Left Corner -->
-    <!-- Version Label in Bottom Left Corner with Link -->
-<div class="version-label">
-    <a href="version.html" style="color: inherit; text-decoration: none;">
-        Version 0.4
-    </a>
-</div>
+    <div class="version-label">
+        <a href="version.html" style="color: inherit; text-decoration: none;">
+            Version 0.4
+        </a>
+    </div>
+
+    <script>
+        // Load the embedded game content into the main content area
+        function loadGame(gameURL) {
+            // Set the game content
+            const gameContent = `
+                <iframe src="${gameURL}" width="100%" height="100%" frameborder="0" style="border-radius: 8px;"></iframe>
+            `;
+            document.getElementById('game-content').innerHTML = gameContent;
+        }
+    </script>
+
 </body>
 </html>
