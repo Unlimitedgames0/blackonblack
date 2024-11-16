@@ -138,7 +138,25 @@
     color: white;  /* Change text color to white */
 }
 
+/* Popular Sites Section */
+.popular-sites {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
 
+.popular-sites a {
+    text-decoration: none;  /* Remove the underline */
+    color: white;  /* Change text color to white */
+}
+
+.popular-sites .game-button {
+    background-color: #333;
+}
+
+.popular-sites .game-button:hover {
+    background-color: #444;
+}
 
     </style>
 </head>
@@ -173,11 +191,7 @@
         <main class="content" id="game-content">
             <h1>Welcome to Black on Black</h1>
             <p>Black On Black presents a wide variety of exciting games brought to you for pure satisfaction!</p>
-            <h1> </h1>
-            <h1> </h1>
             <h1>Popular Games:</h1>
-            
-            
             
             <!-- Popular Games Section -->
             <div class="popular-games">
@@ -217,11 +231,21 @@
                         <h1>Drive Mad</h1>
                     </button>
                 </a>
-                <h1>Popular Sites:</h1>
+            </div>
+
+            <!-- Popular Sites Section -->
+            <h1>Popular Sites:</h1>
+            <div class="popular-sites">
                 <a href="#" onclick="loadGame('https://yandhi.herokuapp.com/service/hvtrs8%2F-wuw%2Ccpaxyeaoeq.aoo%2F')">
                     <button class="game-button">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Crazygames_jpg_logo.jpg/800px-Crazygames_jpg_logo.jpg" alt="Drive Mad">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Crazygames_jpg_logo.jpg/800px-Crazygames_jpg_logo.jpg" alt="Crazy Games">
                         <h1>Crazy Games</h1>
+                    </button>
+                </a>
+                <a href="#" onclick="loadGame('https://yandhi.herokuapp.com/service/hvtrs8%2F-wuw%2Ctkkvoi.aoo%2Fgxrlmrg')">
+                    <button class="game-button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-y1X4Z1n2heGuEw4_tcyaTEXHcgc7CI186g" alt="TikTok">
+                        <h1>TikTok</h1>
                     </button>
                 </a>
             </div>
